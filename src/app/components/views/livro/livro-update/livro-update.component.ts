@@ -47,7 +47,7 @@ export class LivroUpdateComponent implements OnInit {
       this.service.mensagem('Livro atualizado com sucesso.')
     }, err => {
       this.router.navigate([`categorias/${this.id_cat}/livros`]);
-      this.service.mensagem('Falaha ao atualizar livro, tente mais tarde.')
+      this.service.mensagem('Falha ao atualizar livro, tente mais tarde.')
     } )
   } 
 

@@ -1,0 +1,53 @@
+.home {
+    width: 95%;
+    margin: 1rem auto;
+}
+
+@media(max-width: 450px){
+    .home {
+        width: 70%
+    }
+}
+
+@media(max-width: 770px){
+    .home {
+        width: 90%
+    }
+}
+
+form {
+    text-align: center;
+    width: 70%;
+    margin: 2rem auto 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+    text-shadow: rgb(158, 156, 156) 2px 3px 2px;
+}
+
+.form {
+    width: 100%;
+}
+
+.buttons {
+    width: 100%;
+    text-align: start;
+}
+
+button {
+    margin-right: .5rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.footer-login {  
+    margin-top: 2rem;
+    justify-content: center;
+    font-size: 1rem;
+    color: rgb(10, 10, 10);
+    background-color: rgb(180, 175, 175);
+    height: 5%;
+}

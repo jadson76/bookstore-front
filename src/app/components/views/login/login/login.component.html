@@ -1,0 +1,49 @@
+<mat-card class="home mat-elevation-z4">
+  <mat-card-title class="title">Bem vindo!</mat-card-title>
+  <mat-card-subtitle class="subtitle">Sistema para exemplificar CRUD usando Angular e Spring Boot</mat-card-subtitle>
+  <div id="layoutAutentication">
+    <div id="layoutAuthentication_content">
+      <main>
+        <div class="container">
+          <div class="row">
+            <div class="row justify-content-center">
+              <div class="col-lg-5">
+                <div class="card shadow-lg border-0 rouded-lg mt-5">
+                  <div class="mat-card-header">
+                    <h3 mat-elevation-z8>
+                        {{cadastrando ? 'Cadastro de Novo Usuario' : 'Entrar' }}
+                    </h3>
+                  </div>
+                  <div class="card-body">
+                    <form>
+                      <mat-form-field class="form">
+                        <mat-label>Login</mat-label>
+                        <input matInput [(ngModel)]="username" type="text" name="username" placeholder="Digite seu Login.">
+                    </mat-form-field>
+                    <mat-form-field class="form">
+                        <mat-label>Senha</mat-label>
+                        <input matInput [(ngModel)]="password" matInput type="password"
+                         name="password" placeholder="digite sua senha." />        
+                    </mat-form-field>
+                    <div class="form-group">
+                      <button (click)="onSubmit()" class="mat-elevation-z8"  mat-stroked-button color="primary" *ngIf="!cadastrando">Enviar</button>
+                      <button (click)="onSubmit()" class="mat-elevation-z8"  mat-stroked-button color="primary" *ngIf="cadastrando">Cadastrar</button>
+                      <button (click)="cancelaCadastro()" class="mat-elevation-z8"  mat-stroked-button color="warn" *ngIf="cadastrando">Cancelar</button>
+                    </div>
+
+                    </form>                    
+                  </div>
+                  <mat-toolbar class="footer-login">
+                    <a href="#"  (click)="preparaCadastrar($event)">
+                      Não Possui Usuário? Cadastre-se!  
+                    </a>
+                </mat-toolbar>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>  
+</mat-card>
