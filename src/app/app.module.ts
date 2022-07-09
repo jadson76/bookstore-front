@@ -31,6 +31,9 @@ import { LivroCreateComponent } from './components/views/livro/livro-create/livr
 import { LivroUpdateComponent } from './components/views/livro/livro-update/livro-update.component';
 import { LoginComponent } from './components/views/login/login/login.component';
 import { LayoutComponent } from './components/template/layout/layout.component';
+import { CategoriaService } from './components/services/categoria.service';
+import { LivroService } from './components/services/livro.service';
+import { AuthService } from './components/services/auth.service';
 
 
 @NgModule({
@@ -70,7 +73,11 @@ import { LayoutComponent } from './components/template/layout/layout.component';
     ReactiveFormsModule
     
   ],
-  providers: [],
+  providers: [
+    CategoriaService,
+    LivroService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

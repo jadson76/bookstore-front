@@ -17,27 +17,32 @@ export class CategoriaService {
 
   findAll():Observable<Categoria[]> {
     const url = `${this.baseUrl}/categorias`
-     return this.http.get<Categoria[]>(url) 
+    const headers = this.obterToken();
+     return this.http.get<Categoria[]>(url,{ headers }) 
   }
 
   findById(id: String) : Observable<Categoria> {
     const url = `${this.baseUrl}/categorias/${id}`
-    return this.http.get<Categoria>(url);
+    const headers = this.obterToken();
+    return this.http.get<Categoria>(url,{ headers });
   }
 
   create(categoria: Categoria): Observable<Categoria> {
     const url = `${this.baseUrl}/categorias`
-    return this.http.post<Categoria>(url,categoria);
+    const headers = this.obterToken();
+    return this.http.post<Categoria>(url,categoria, { headers });
   }
 
   delete(id: String):Observable<void> {
     const url = `${this.baseUrl}/categorias/${id}`
-    return this.http.delete<void>(url) 
+    const headers = this.obterToken();
+    return this.http.delete<void>(url, { headers }) 
   } 
   
   update(categoria: Categoria): Observable<void> {
     const url = `${this.baseUrl}/categorias/${categoria.id}`
-    return this.http.put<void>(url,categoria)
+    const headers = this.obterToken();
+    return this.http.put<void>(url,categoria, { headers })
   }
 
   mensagem(str: String): void {
@@ -46,5 +51,14 @@ export class CategoriaService {
       verticalPosition: 'top',
       duration: 3000
     })
-  }  
+  } 
+  
+  obterToken() {
+    const tokenString = localStorage.getItem('access_token')
+    const token = JSON.parse(tokenString)
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
+    return headers;
+  }
 }

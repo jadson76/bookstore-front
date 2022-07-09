@@ -43,7 +43,7 @@ export class LivroCreateComponent implements OnInit {
 
   cancel(): void {
     this.router.navigate([`categorias/${this.id_cat}/livros`]);
-  }
+  }  
 
   getMessage() {
     if(this.titulo.invalid) {

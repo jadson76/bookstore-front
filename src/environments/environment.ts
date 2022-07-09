@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://bookstore-jad-api.herokuapp.com'
+  baseUrl: 'http://localhost:8081', //'https://bookstore-jad-api.herokuapp.com'
+  clientId: 'bookstore-app',
+  clienteSecret: '@2792022_CATCHER',
+  obterTokenUrl:  '/oauth/token',
+  grantType: 'password'
 };
 
 /*

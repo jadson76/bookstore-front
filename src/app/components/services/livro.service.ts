@@ -16,22 +16,26 @@ export class LivroService {
 
   findAllByCatgoria(id_cat: String): Observable<Livro[]> {
     const url = `${this.baseUrl}/livros?categoria=${id_cat}`
-    return this.http.get<Livro[]>(url)
+    const headers = this.obterToken();
+    return this.http.get<Livro[]>(url, { headers })
   }
 
   findById(id: String): Observable<Livro> {
     const url = `${this.baseUrl}/livros/${id}`
-    return this.http.get<Livro>(url)
+    const headers = this.obterToken();
+    return this.http.get<Livro>(url, { headers })
   }
 
   create(livro: Livro, id_cat: String): Observable<Livro> {
     const url = `${this.baseUrl}/livros?categoria=${id_cat}`
-    return this.http.post<Livro>(url,livro)
+    const headers = this.obterToken();
+    return this.http.post<Livro>(url,livro, { headers })
   }
 
   update(livro: Livro) : Observable<Livro> {
     const url = `${this.baseUrl}/livros/${livro.id}`
-    return this.http.put<Livro>(url,livro)
+    const headers = this.obterToken();
+    return this.http.put<Livro>(url,livro, { headers })
   }
 
   mensagem(str: String): void {
@@ -40,5 +44,14 @@ export class LivroService {
       verticalPosition: 'top',
       duration: 3000
     })
+  }
+
+  obterToken() {
+    const tokenString = localStorage.getItem('access_token')
+    const token = JSON.parse(tokenString)
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
+    return headers;
   }
 }

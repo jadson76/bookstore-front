@@ -15,19 +15,26 @@
                     </h3>
                   </div>
                   <div class="card-body">
-                    <form>
+                    <form>                                   
+                      <mat-form-field class="form" *ngIf="cadastrando">
+                        <mat-label>Nome</mat-label>
+                        <input matInput [(ngModel)]="usuario.nome" type="text" name="nome" placeholder="Digite seu Nome.">
+                        <mat-error *ngIf="nomeInvalid">{{ getMessage() }}</mat-error>
+                      </mat-form-field>
                       <mat-form-field class="form">
                         <mat-label>Login</mat-label>
-                        <input matInput [(ngModel)]="username" type="text" name="username" placeholder="Digite seu Login.">
-                    </mat-form-field>
-                    <mat-form-field class="form">
+                        <input matInput [(ngModel)]="usuario.username" type="text" name="username" placeholder="Digite seu Login.">
+                        <mat-error *ngIf="usernameInvalid">{{ getMessage() }}</mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="form">
                         <mat-label>Senha</mat-label>
-                        <input matInput [(ngModel)]="password" matInput type="password"
-                         name="password" placeholder="digite sua senha." />        
-                    </mat-form-field>
+                        <input matInput [(ngModel)]="usuario.password" matInput type="password"
+                         name="password" placeholder="digite sua senha." />
+                         <mat-error *ngIf="passwordInvalid">{{ getMessage() }}</mat-error>        
+                      </mat-form-field>
                     <div class="form-group">
                       <button (click)="onSubmit()" class="mat-elevation-z8"  mat-stroked-button color="primary" *ngIf="!cadastrando">Enviar</button>
-                      <button (click)="onSubmit()" class="mat-elevation-z8"  mat-stroked-button color="primary" *ngIf="cadastrando">Cadastrar</button>
+                      <button (click)="cadastrar()" class="mat-elevation-z8"  mat-stroked-button color="primary" *ngIf="cadastrando">Cadastrar</button>
                       <button (click)="cancelaCadastro()" class="mat-elevation-z8"  mat-stroked-button color="warn" *ngIf="cadastrando">Cancelar</button>
                     </div>
 
