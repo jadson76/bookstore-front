@@ -14,7 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
@@ -34,6 +34,7 @@ import { LayoutComponent } from './components/template/layout/layout.component';
 import { CategoriaService } from './components/services/categoria.service';
 import { LivroService } from './components/services/livro.service';
 import { AuthService } from './components/services/auth.service';
+import { TokenInterceptor } from './components/interceptor/token.interceptor';
 
 
 @NgModule({
@@ -76,7 +77,12 @@ import { AuthService } from './components/services/auth.service';
   providers: [
     CategoriaService,
     LivroService,
-    AuthService
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

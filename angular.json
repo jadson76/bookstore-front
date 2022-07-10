@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/bookstore-front",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -55,6 +56,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -110,5 +115,8 @@
       }
     }
   },
-  "defaultProject": "bookstore-front"
+  "defaultProject": "bookstore-front",
+  "cli": {
+    "analytics": "db0484cf-a77e-4daa-81b6-4429b1e2e4d2"
+  }
 }

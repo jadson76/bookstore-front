@@ -1,10 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable'
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../models/usuario.model';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,8 +15,22 @@ export class AuthService {
   clientId: string = environment.clientId;
   clientSecret: string = environment.clienteSecret;
   grantType: string = environment.grantType;
+  jwtHelper: JwtHelperService = new JwtHelperService();
 
   constructor(private http: HttpClient,private _snack: MatSnackBar) { }
+
+  obterToken() {
+    const tokenString = localStorage.getItem('acess_token')
+    if(tokenString){
+      const token = JSON.parse(tokenString).acess_token
+      return token;
+    }
+    return null;
+  }
+
+  isAuthenticated() : boolean {
+    return false;
+  }
 
   salvar(usuario: Usuario) : Observable<any> {
     return this.http.post<any>(this.baseUrl,usuario);

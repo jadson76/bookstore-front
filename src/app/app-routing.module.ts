@@ -10,6 +10,7 @@ import { LivroCreateComponent } from './components/views/livro/livro-create/livr
 import { LivroUpdateComponent } from './components/views/livro/livro-update/livro-update.component';
 import { LoginComponent } from './components/views/login/login/login.component';
 import { LayoutComponent } from './components/template/layout/layout.component';
+import { AuthGuard } from './components/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -22,35 +23,35 @@ const routes: Routes = [
     component: LayoutComponent, children: [
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent, canActivate : [AuthGuard]
       },
       {
         path: 'categorias',
-        component: CategoriaReadComponent
+        component: CategoriaReadComponent, canActivate : [AuthGuard]
       },
       {
         path: 'categorias/create',
-        component: CategoriaCreateComponent
+        component: CategoriaCreateComponent, canActivate : [AuthGuard]
       },
       {
         path: 'categorias/delete/:id',
-        component: CategoriaDeleteComponent
+        component: CategoriaDeleteComponent, canActivate : [AuthGuard]
       },
       {
         path: 'categorias/update/:id',
-        component: CategoriaUpdateComponent
+        component: CategoriaUpdateComponent, canActivate : [AuthGuard]
       },
       {
         path: 'categorias/:id_cat/livros',
-        component: LivroReadAllComponent
+        component: LivroReadAllComponent, canActivate : [AuthGuard]
       },
       {
         path: 'categorias/:id_cat/livros/create',
-        component: LivroCreateComponent
+        component: LivroCreateComponent, canActivate : [AuthGuard]
       },
       {
         path: 'categorias/:id_cat/livros/:id/update',
-        component: LivroUpdateComponent
+        component: LivroUpdateComponent, canActivate : [AuthGuard]
       }
     ]
   },
