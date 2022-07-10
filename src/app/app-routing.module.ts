@@ -52,6 +52,9 @@ const routes: Routes = [
       {
         path: 'categorias/:id_cat/livros/:id/update',
         component: LivroUpdateComponent, canActivate : [AuthGuard]
+      },
+      {
+        path: '', redirectTo: '/home', pathMatch: 'full'
       }
     ]
   },

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../models/usuario.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -51,6 +51,20 @@ export class AuthService {
       'Content-Type' : 'application/x-www-form-urlencoded'
     }                  
     return this.http.post(this.tokenUrl, params.toString(), {headers});
+  }
+
+  encerrarSessao() {
+    localStorage.removeItem('acess_token')    
+  }
+
+  getUsuarioAutenticado() {
+    const token = this.obterToken();
+    if(token){
+      const usuario = this.jwtHelper.decodeToken(token).username
+      return usuario;
+    }
+    return null;
+
   }
 
   mensagem(str: String): void {
