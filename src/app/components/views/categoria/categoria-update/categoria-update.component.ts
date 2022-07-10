@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
+import { throwMatDialogContentAlreadyAttachedError } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Categoria } from 'src/app/components/models/categoria.model';
 import { CategoriaService } from 'src/app/components/services/categoria.service';
